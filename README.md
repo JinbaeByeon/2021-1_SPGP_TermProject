@@ -16,7 +16,7 @@
 ![image](https://user-images.githubusercontent.com/22373033/113483609-546d5000-94df-11eb-8cbb-beb8aa7da9ed.png)
 
 
-	↓↓↓
+          ↓↓↓
 
 
 2. 인게임 화면
@@ -26,7 +26,7 @@
 적 기체를 잡을 시 일정확률로 스펙업 아이템 드랍, 일정이상 스테이지를 진행하면 보스 스테이지 진입
 
 
-	↓↓↓
+          ↓↓↓
 
 
 3. 인게임 화면(보스 스테이지)
@@ -34,7 +34,7 @@
 ![image](https://user-images.githubusercontent.com/22373033/113483666-95fdfb00-94df-11eb-8c51-9452902deabf.png)
 
 
-	↓↓↓
+          ↓↓↓
 
 
 4. 플레이어가 죽을 때까지 2,3 반복

@@ -6,7 +6,7 @@ import android.util.Log;
 import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
 
 public class CollisionHelper {
-    private static final String TAG = kr.ac.kpu.game.s2015182013.termproject.utils.CollisionHelper.class.getSimpleName();
+    private static final String TAG = CollisionHelper.class.getSimpleName();
     private static RectF rect1 = new RectF();
     private static RectF rect2 = new RectF();
     public static boolean collides(BoxCollidable o1, BoxCollidable o2) {

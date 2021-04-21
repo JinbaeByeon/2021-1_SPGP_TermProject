@@ -16,6 +16,7 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     private final GameBitmap bitmap;
     private float y;
     private int speed;
+    private final int damage = 10;
 
     private Bullet(float x, float y, int speed) {
         this.x = x;
@@ -27,11 +28,11 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     }
 
     //    private static ArrayList<Bullet> recycleBin = new ArrayList<>();
-    public static Bullet get(float x, float y, int speed) {
+    public static kr.ac.kpu.game.s2015182013.termproject.game.Bullet get(float x, float y, int speed) {
         MainGame game = MainGame.get();
         Bullet bullet = (Bullet) game.get(Bullet.class);
         if (bullet == null) {
-            return new Bullet(x, y, speed);
+            return new kr.ac.kpu.game.s2015182013.termproject.game.Bullet(x, y, speed);
         }
         bullet.init(x, y, speed);
         return bullet;
@@ -66,5 +67,9 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     @Override
     public void recycle() {
         // 재활용통에 들어가는 시점에 불리는 함수. 현재는 할일없음.
+    }
+
+    public void attack(Enemy enemy) {
+        enemy.hitBullet(damage);
     }
 }

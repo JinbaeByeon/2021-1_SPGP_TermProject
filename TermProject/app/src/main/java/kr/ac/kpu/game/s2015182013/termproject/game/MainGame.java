@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.ac.kpu.game.s2015182013.termproject.R;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
 import kr.ac.kpu.game.s2015182013.termproject.framework.Recyclable;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
@@ -68,6 +69,11 @@ public class MainGame {
         score.setScore(0);
         add(Layer.ui, score);
 
+        VerticalScrollBackground bg = new VerticalScrollBackground(R.mipmap.bg_city, 10);
+        add(Layer.bg1, bg);
+
+        VerticalScrollBackground clouds = new VerticalScrollBackground(R.mipmap.clouds, 20);
+        add(Layer.bg2, clouds);
 
         initialized = true;
         return true;
@@ -96,8 +102,9 @@ public class MainGame {
             for (GameObject o2: bullets) {
                 Bullet bullet = (Bullet) o2;
                 if (CollisionHelper.collides(enemy, bullet)) {
+                    bullet.attack(enemy);
                     remove(bullet, false);
-                    remove(enemy, false);
+//                    remove(enemy, false);
                     score.addScore(10);
                     collided = true;
                     break;
@@ -121,6 +128,9 @@ public class MainGame {
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction();
 //        if (action == MotionEvent.ACTION_DOWN) {
+        if(action == MotionEvent.ACTION_DOWN){
+            player.setPivot(event.getX(), event.getY());
+        }
         if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE) {
             player.moveTo(event.getX(), event.getY());
 //            int li = 0;

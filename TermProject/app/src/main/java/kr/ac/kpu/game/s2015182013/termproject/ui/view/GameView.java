@@ -14,14 +14,14 @@ import kr.ac.kpu.game.s2015182013.termproject.framework.Sound;
 import kr.ac.kpu.game.s2015182013.termproject.game.MainGame;
 
 public class GameView extends View {
-    private static final String TAG = GameView.class.getSimpleName();
+    private static final String TAG = kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView.class.getSimpleName();
 
     public static float MULTIPLIER = 2;
     private boolean running;
     //    private Ball b1, b2;
 
     private long lastFrame;
-    public static GameView view;
+    public static kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView view;
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

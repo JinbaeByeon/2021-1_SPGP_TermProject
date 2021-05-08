@@ -18,7 +18,7 @@ public class Health implements GameObject {
     }
 
 
-    public Health(int left, int top, int hp) {
+    public Health(int left, int top,int hp) {
         this.left = left;
         this.top = top;
         maxHp = this.hp = hp;

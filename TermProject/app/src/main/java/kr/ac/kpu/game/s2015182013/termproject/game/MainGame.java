@@ -29,7 +29,7 @@ public class MainGame {
     public float frameTime;
     private boolean initialized;
 
-    //    Player player;
+//    Player player;
     ArrayList<ArrayList<GameObject>> layers;
     private static HashMap<Class, ArrayList<GameObject>> recycleBin = new HashMap<>();
 
@@ -75,6 +75,7 @@ public class MainGame {
 
         VerticalScrollBackground clouds = new VerticalScrollBackground(R.mipmap.clouds, 20);
         add(Layer.bg2, clouds);
+
         initialized = true;
         return true;
     }

@@ -5,12 +5,9 @@ import android.graphics.RectF;
 import android.util.Log;
 
 import kr.ac.kpu.game.s2015182013.termproject.R;
-import kr.ac.kpu.game.s2015182013.termproject.framework.AnimationGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
-import kr.ac.kpu.game.s2015182013.termproject.framework.GameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
 import kr.ac.kpu.game.s2015182013.termproject.framework.IndexedAnimationGameBitmap;
-import kr.ac.kpu.game.s2015182013.termproject.framework.IndexedGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.Recyclable;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 

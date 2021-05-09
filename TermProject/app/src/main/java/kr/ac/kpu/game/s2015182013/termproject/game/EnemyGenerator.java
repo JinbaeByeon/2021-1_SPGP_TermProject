@@ -5,13 +5,12 @@ import android.graphics.Canvas;
 import java.util.Random;
 
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
-import kr.ac.kpu.game.s2015182013.termproject.game.Enemy;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class EnemyGenerator implements GameObject {
 
     private static final float INITIAL_SPAWN_INTERVAL = 5.0f;
-    private static final String TAG = kr.ac.kpu.game.s2015182013.termproject.game.EnemyGenerator.class.getSimpleName();
+    private static final String TAG = EnemyGenerator.class.getSimpleName();
     private float time;
     private float spawnInterval;
     private int wave;

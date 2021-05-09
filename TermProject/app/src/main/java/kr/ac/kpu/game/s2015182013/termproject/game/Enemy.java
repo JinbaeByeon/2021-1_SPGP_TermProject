@@ -22,7 +22,7 @@ public class Enemy implements GameObject, BoxCollidable, Recyclable {
     private static final int[] RESOURCE_IDS = {
             R.mipmap.enemy_a, R.mipmap.enemy_b, R.mipmap.enemy_c, R.mipmap.enemy_d
     };
-    private static final String TAG = kr.ac.kpu.game.s2015182013.termproject.game.Enemy.class.getSimpleName();
+    private static final String TAG = Enemy.class.getSimpleName();
     private float x;
     private GameBitmap planeBitmap;
     private int hp;

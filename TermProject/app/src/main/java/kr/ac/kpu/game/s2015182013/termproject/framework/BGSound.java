@@ -31,4 +31,8 @@ public class BGSound {
     public void stop() {
         mp.stop();
     }
+
+    public void pause() {
+        mp.pause();
+    }
 }

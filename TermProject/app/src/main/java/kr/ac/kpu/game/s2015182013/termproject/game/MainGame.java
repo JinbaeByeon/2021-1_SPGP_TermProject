@@ -101,7 +101,8 @@ public class MainGame {
 
         initialized = true;
         scene = Scene.START;
-        BGSound.get().pause();
+        if(BGSound.get().isPlaying())
+            BGSound.get().pause();
         return true;
     }
 

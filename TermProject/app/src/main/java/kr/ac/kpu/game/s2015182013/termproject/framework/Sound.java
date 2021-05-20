@@ -3,7 +3,6 @@ package kr.ac.kpu.game.s2015182013.termproject.framework;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.util.Log;
 
@@ -19,7 +18,6 @@ public class Sound {
     };
     private static HashMap<Integer, Integer> soundIdMap = new HashMap<>();
 
-    private MediaPlayer mp;
     public static void init(Context context) {
         AudioAttributes audioAttributes;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {

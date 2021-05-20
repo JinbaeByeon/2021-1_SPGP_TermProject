@@ -27,15 +27,17 @@
 
 주차 | 횟수
 :-----: | :-----:
-1주차 | 
-2주차 | 
-3주차 | 
-4주차 | 
-5주차 | 
-6주차 | 
-7주차 | 
-8주차 | 
-9주차 | 
+1주차 | 3
+2주차 | 5
+3주차 | 2
+4주차 | 0
+5주차 | 3
+6주차 | 12
+7주차 | 5
+8주차 | -
+9주차 | -
+
+![image](https://user-images.githubusercontent.com/22373033/119039185-eaf1c400-b9ee-11eb-9000-29a7ea9edbb3.png)
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -126,9 +128,9 @@
 
 
 ---------------------------------------------------------------------------------------------------------------
-[발표 영상 Youtube Link](https://www.youtube.com/watch?v=cfKxoxutmGk "2021-1 SPGP TermProject")
+## [발표 영상 Youtube Link](https://www.youtube.com/watch?v=cfKxoxutmGk "2021-1 SPGP TermProject")
 
-[이전 README.md Link](https://github.com/JinbaeByeon/2021_SPGP/tree/v1/TermProject#2015182013-변진배 "README.md 1차")
+## [이전 README.md Link](https://github.com/JinbaeByeon/2021-1_SPGP_TermProject/blob/v1/README.md "README.md 1차")
 
 
 

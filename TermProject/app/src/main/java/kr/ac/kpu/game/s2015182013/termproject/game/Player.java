@@ -169,4 +169,12 @@ public class Player implements GameObject, BoxCollidable {
 
         }
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
 }

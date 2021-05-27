@@ -17,10 +17,11 @@ public class Boss extends Enemy {
             R.mipmap.boss_a,R.mipmap.boss_b
     };
     private static final String TAG = Boss.class.getSimpleName();
-    private static final float SKILL_INTERVAL = 5.f;
+    private static final float[] SKILL_INTERVAL = {5.f,1.f};
     private float bullet_rotate;
     private int fireDir;
-    private float skillTime;
+    private float[] skillTime;
+    private int nSkill;
 
 
     private Boss()
@@ -56,8 +57,13 @@ public class Boss extends Enemy {
         expTime = 0.0f;
         isHitted=false;
 
+
         int type = (level - 1)%2;
         int resId = RESOURCE_IDS[type];
+        nSkill = type+1;
+        skillTime = new float[nSkill];
+        for(int i=0;i<nSkill;++i)
+            skillTime[i] = 0.0f;
 
         if(type ==0)
             planeBitmap = new GameBitmap(resId);
@@ -92,26 +98,39 @@ public class Boss extends Enemy {
                 fireDir = 1;
         }
 
-        skillTime += game.frameTime;
-        if (skillTime >= SKILL_INTERVAL) {
-            fireBullet(1);
-            skillTime -= SKILL_INTERVAL;
+        for(int i=0;i<nSkill;++i) {
+            skillTime[i] += game.frameTime;
+            if (skillTime[i] >= SKILL_INTERVAL[i]) {
+                fireBullet(i+1);
+                skillTime[i] -= SKILL_INTERVAL[i];
+            }
         }
     }
 
     private void fireBullet(int type) {
         MainGame game = MainGame.get();
+        Bullet bullet;
         if(type==0) {
-            Bullet bullet = Bullet.get(this.x, this.y, BULLET_SPEED, power,
+            bullet = Bullet.get(this.x, this.y, BULLET_SPEED, power,
                     (float) Math.cos(bullet_rotate), (float) Math.sin(bullet_rotate));
             game.add(MainGame.Layer.eBullet, bullet);
         }
         else if(type==1){
             int w = GameView.view.getWidth();
             for(int i=0; i<w;i+=200){
-                Bullet bullet = Bullet.get(i,y,BULLET_SPEED,power);
+                bullet = Bullet.get(i,y,BULLET_SPEED,power);
                 game.add(MainGame.Layer.eBullet,bullet);
             }
+        }
+        else if(type==2) {
+            Player p = (Player) game.layers.get(MainGame.Layer.player.ordinal()).get(0);
+            float tx = p.getX() - x;
+            float ty = p.getY() - y;
+            double dist = Math.sqrt(tx * tx + ty * ty);
+
+            bullet = Bullet.get(this.x, this.y, BULLET_SPEED, power,
+                    tx / (float) dist, ty / (float) dist);
+            game.add(MainGame.Layer.eBullet, bullet);
         }
     }
 

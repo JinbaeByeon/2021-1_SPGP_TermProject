@@ -12,7 +12,7 @@ import kr.ac.kpu.game.s2015182013.termproject.framework.Recyclable;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Bomb implements GameObject, Recyclable {
-    private static final float FRAMES_PER_SECOND = 8.0f;
+    private static final float FRAMES_PER_SECOND = 13.0f;
     private static final String TAG = Bomb.class.getSimpleName();
     private float x;
     private AnimationGameBitmap bitmap;
@@ -21,7 +21,7 @@ public class Bomb implements GameObject, Recyclable {
 
     private Bomb(float x, float y) {
 
-        Log.d(TAG, "loading bitmap for coin");
+        Log.d(TAG, "loading bitmap for Bomb");
     }
 
     //    private static ArrayList<Bullet> recycleBin = new ArrayList<>();

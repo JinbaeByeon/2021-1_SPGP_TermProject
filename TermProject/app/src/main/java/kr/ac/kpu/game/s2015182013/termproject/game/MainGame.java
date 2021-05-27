@@ -101,8 +101,9 @@ public class MainGame {
         bgTitle = new GameBitmap(R.mipmap.bg_title);
         bgTitle.setSize(w/(int)GameView.MULTIPLIER,h/(int)GameView.MULTIPLIER);
 
-        button = new Button(w-100.f,h-100.f);
-        add(Layer.ui,button);
+        if(button==null)
+            button = new Button(w-100.f,h-100.f);
+        add(Layer.controller,button);
 
         initialized = true;
         scene = Scene.START;
@@ -168,6 +169,8 @@ public class MainGame {
 
                 // 적 - 플레이어 총알
                 collides(layers.get(Layer.enemy.ordinal()), layers.get(Layer.pBullet.ordinal()));
+
+                button.setBomb(player.getBomb());
             }break;
             case END:{
 

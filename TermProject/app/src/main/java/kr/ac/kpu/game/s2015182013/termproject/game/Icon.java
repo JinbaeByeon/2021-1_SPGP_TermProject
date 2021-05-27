@@ -6,20 +6,17 @@ import android.util.Log;
 import kr.ac.kpu.game.s2015182013.termproject.R;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
-import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
-public class Button implements GameObject {
-    private static final String TAG = Button.class.getSimpleName();
+public class Icon implements GameObject {
+    private static final String TAG = Icon.class.getSimpleName();
     private float x;
     private GameBitmap button;
     private GameBitmap icon;
     private float y;
     private int r;
-    private int nBomb;
 
-
-    public Button(float x, float y) {
-        Log.d(TAG, "loading bitmap for button");
+    public Icon(float x, float y) {
+        Log.d(TAG, "loading bitmap for icon");
 
         this.x = x;
         this.y = y;
@@ -40,12 +37,11 @@ public class Button implements GameObject {
     @Override
     public void draw(Canvas canvas) {
         button.draw(canvas, x, y);
-        drawIcon(canvas);
     }
 
-    public void drawIcon(Canvas canvas){
-        for (int i = 1; i <= nBomb; i++) {
-            icon.draw(canvas,x,y-i*r* GameView.MULTIPLIER);
+    public void drawIcon(Canvas canvas,int nBomb){
+        for (int i = 0; i < nBomb; i++) {
+            icon.draw(canvas,x,y-i*r);
         }
     }
 
@@ -57,9 +53,5 @@ public class Button implements GameObject {
             return true;
         }
         return false;
-    }
-
-    public void setBomb(int bomb) {
-        nBomb =bomb;
     }
 }

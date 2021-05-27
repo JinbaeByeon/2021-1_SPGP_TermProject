@@ -3,6 +3,8 @@ package kr.ac.kpu.game.s2015182013.termproject.game;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
+import java.util.ArrayList;
+
 import kr.ac.kpu.game.s2015182013.termproject.R;
 import kr.ac.kpu.game.s2015182013.termproject.framework.AnimationGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
@@ -169,8 +171,9 @@ public class Player implements GameObject, BoxCollidable {
                     power=100;
                 break;
             case Bomb:
-                if(nBomb<3)
-                    nBomb +=1;
+                if(nBomb<3) {
+                    nBomb += 1;
+                }
                 break;
             case Health:
                 hp+=30;
@@ -187,7 +190,7 @@ public class Player implements GameObject, BoxCollidable {
             Bomb bomb = Bomb.get(GameView.view.getWidth()/2, GameView.view.getHeight());
             MainGame game = MainGame.get();
             game.add(MainGame.Layer.ui, bomb);
-//            --nBomb;
+            --nBomb;
         }
     }
 
@@ -197,5 +200,9 @@ public class Player implements GameObject, BoxCollidable {
 
     public float getY() {
         return y;
+    }
+
+    public int getBomb() {
+        return nBomb;
     }
 }

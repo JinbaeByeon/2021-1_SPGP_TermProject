@@ -1,6 +1,7 @@
 package kr.ac.kpu.game.s2015182013.termproject.game;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class MainGame {
     private Health health;
     private VerticalScrollBackground bg,clouds;
     private GameBitmap bgTitle;
+    private Button button;
 
     public static MainGame get() {
         if (instance == null) {
@@ -98,6 +100,9 @@ public class MainGame {
         add(Layer.bg2, clouds);
         bgTitle = new GameBitmap(R.mipmap.bg_title);
         bgTitle.setSize(w/(int)GameView.MULTIPLIER,h/(int)GameView.MULTIPLIER);
+
+        button = new Button(w-100.f,h-100.f);
+        add(Layer.ui,button);
 
         initialized = true;
         scene = Scene.START;
@@ -204,6 +209,9 @@ public class MainGame {
                 return true;
             }
             else if(scene == Scene.INGAME) {
+                if (button.isClicked(event.getX(), event.getY())) {
+                    player.shotBomb();
+                }
                 player.setPivot(event.getX(), event.getY());
             }
             else if(scene == Scene.END){

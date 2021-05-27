@@ -32,7 +32,7 @@ public class Player implements GameObject, BoxCollidable {
     private float index;
     private int hp;
     private int power;
-    private int bomb;
+    private int nBomb;
 
     public Player(float x, float y) {
         this.x = x;
@@ -41,16 +41,22 @@ public class Player implements GameObject, BoxCollidable {
         ty = y;
         cx = x;
         cy = y;
+
         planeBitmap = new IndexedGameBitmap(R.mipmap.fighters,67,80,11,0,0);
         planeBitmap.setOffset(50);
-        fireBitmap = new GameBitmap(R.mipmap.laser_0);
-        expBitmap = new AnimationGameBitmap(R.mipmap.hit,8,6);
-        expBitmap.setSize(40,40);
-        fireTime = 0.0f;
-        expTime = 0.0f;
         index = 5;
         power =10;
         isHitted=false;
+
+        fireBitmap = new GameBitmap(R.mipmap.laser_0);
+        fireTime = 0.0f;
+
+        expBitmap = new AnimationGameBitmap(R.mipmap.hit,8,6);
+        expBitmap.setSize(40,40);
+        expTime = 0.0f;
+
+        nBomb = 1;
+
 
         hp =100;
         int w = GameView.view.getWidth();
@@ -64,6 +70,13 @@ public class Player implements GameObject, BoxCollidable {
     public void moveTo(float x, float y) {
         this.tx = x;
         this.ty = y;
+    }
+
+    public void setPivot(float x, float y) {
+        cx = x;
+        cy = y;
+        tx = x;
+        ty = y;
     }
 
     public void update() {
@@ -147,12 +160,6 @@ public class Player implements GameObject, BoxCollidable {
         planeBitmap.getBoundingRect(x, y, rect);
     }
 
-    public void setPivot(float x, float y) {
-        cx = x;
-        cy = y;
-        tx = x;
-        ty = y;
-    }
 
     public void increase(Item.Type type) {
         switch (type){
@@ -162,7 +169,8 @@ public class Player implements GameObject, BoxCollidable {
                     power=100;
                 break;
             case Bomb:
-                bomb+=1;
+                if(nBomb<3)
+                    nBomb +=1;
                 break;
             case Health:
                 hp+=30;
@@ -171,6 +179,15 @@ public class Player implements GameObject, BoxCollidable {
                 hpBar.setHP(hp);
                 break;
 
+        }
+    }
+
+    public void shotBomb(){
+        if(nBomb >0) {
+            Bomb bomb = Bomb.get(GameView.view.getWidth()/2, GameView.view.getHeight());
+            MainGame game = MainGame.get();
+            game.add(MainGame.Layer.ui, bomb);
+//            --nBomb;
         }
     }
 

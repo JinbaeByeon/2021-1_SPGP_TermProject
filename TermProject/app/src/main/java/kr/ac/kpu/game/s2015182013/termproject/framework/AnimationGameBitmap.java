@@ -62,7 +62,7 @@ public class AnimationGameBitmap extends GameBitmap {
     }
 
     public int getHeight() {
-        return (int) (imageHeight * GameView.MULTIPLIER);
+        return (int) (h * GameView.MULTIPLIER);
     }
 
     public void reset() {

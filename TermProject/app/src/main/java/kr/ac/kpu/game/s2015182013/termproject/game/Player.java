@@ -3,8 +3,6 @@ package kr.ac.kpu.game.s2015182013.termproject.game;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
-import java.util.ArrayList;
-
 import kr.ac.kpu.game.s2015182013.termproject.R;
 import kr.ac.kpu.game.s2015182013.termproject.framework.AnimationGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
@@ -44,7 +42,7 @@ public class Player implements GameObject, BoxCollidable {
         cx = x;
         cy = y;
 
-        planeBitmap = new IndexedGameBitmap(R.mipmap.fighters,67,80,11,0,0);
+        planeBitmap = new IndexedGameBitmap(R.mipmap.player1,67,80,11,0,0);
         planeBitmap.setOffset(50);
         index = 5;
         power =10;

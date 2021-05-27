@@ -142,24 +142,7 @@ public class Boss extends Enemy {
             expBitmap.draw(canvas,x,y+50);
     }
 
-    private void drawHealthBar(Canvas canvas) {
-        float w = planeBitmap.getWidth();
-        float h = planeBitmap.getHeight();
-        float l = x- w/2;
-        float t = y + h + 10;
-        float r = x+w/2;
-        float b = t + 30;
-        paint.setColor(Color.GRAY);
-        canvas.drawRect(l,t,r,b,paint);
-        paint.setColor(Color.RED);
-        r = l + w*hp/maxHp;
-        canvas.drawRect(l,t,r,b,paint);
-    }
 
-    @Override
-    public void getBoundingRect(RectF rect) {
-        planeBitmap.getBoundingRect(x, y, rect);
-    }
 
     @Override
     public void recycle() {

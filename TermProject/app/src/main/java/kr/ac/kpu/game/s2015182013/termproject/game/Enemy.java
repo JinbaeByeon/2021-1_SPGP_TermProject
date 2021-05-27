@@ -141,11 +141,11 @@ public class Enemy implements GameObject, BoxCollidable, Recyclable {
             expBitmap.draw(canvas,x,y+10);
     }
 
-    private void drawHealthBar(Canvas canvas) {
-        float w = 100;
+    protected void drawHealthBar(Canvas canvas) {
+        float w = planeBitmap.getWidth();
         float h = planeBitmap.getHeight();
         float l = x- w/2;
-        float t = y + h + 10;
+        float t = y + h/2 + 10;
         float r = x+w/2;
         float b = t + 30;
         paint.setColor(Color.GRAY);

@@ -50,8 +50,9 @@ public class GameBitmap {
         canvas.drawBitmap(bitmap, null, dstRect, null);
     }
 
+    // 바운딩박스 그리기
     public void drawBoundingRect(Canvas canvas){
-        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
+//        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
     }
 
     protected int ox;
@@ -59,11 +60,11 @@ public class GameBitmap {
         ox =x;
     }
     public int getHeight() {
-        return hh*2;
+        return hh*2*(int)GameView.MULTIPLIER;
     }
 
     public int getWidth() {
-        return hw*2;
+        return hw*2*(int)GameView.MULTIPLIER;
     }
 
     public void getBoundingRect(float x, float y, RectF rect) {

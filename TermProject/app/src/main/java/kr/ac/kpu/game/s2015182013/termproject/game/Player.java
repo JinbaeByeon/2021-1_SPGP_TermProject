@@ -12,6 +12,7 @@ import kr.ac.kpu.game.s2015182013.termproject.framework.IndexedGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Player implements GameObject, BoxCollidable {
+    private final float EPSILON = 0.1f;
     private static final String TAG = Player.class.getSimpleName();
     private static final int BULLET_SPEED = 1500;
     private static final float FIRE_INTERVAL = 1.0f / 7.5f;
@@ -68,17 +69,20 @@ public class Player implements GameObject, BoxCollidable {
     public void update() {
         MainGame game = MainGame.get();
 
-        float dx = tx-cx;
-        if(dx<0&& index>0)
-            index= index -0.5f;
-        else if(dx>0&&index<10)
-            index= index +0.5f;
-        else
-            index =5;
+        float dx = (tx-cx)/5;
+        if(dx<-EPSILON&& index>0)
+            index= index -0.3f;
+        else if(dx>EPSILON&&index<10)
+            index= index +0.3f;
+        else if(dx<=EPSILON&& dx>=-EPSILON) {
+            index = 5;
+            cx =tx;
+            cy =ty;
+        }
         planeBitmap.setIndex((int)index);
-        float dy = ty-cy;
-        cx=tx;
-        cy=ty;
+        float dy = (ty-cy)/5;
+        cx+=dx;
+        cy+=dy;
 
         float w =GameView.view.getWidth();
         float h =GameView.view.getHeight();

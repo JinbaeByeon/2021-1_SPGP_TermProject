@@ -121,7 +121,7 @@ public class MainGame {
                     if(o2 instanceof Bullet)
                         ((Bullet) o2).attack((BoxCollidable)o1);
                     else if(o2 instanceof Coin)
-                        score.addScore(50);
+                        score.addScore(100);
                     else if(o2 instanceof Item&& o1 instanceof Player) {
                         ((Item) o2).upgrade((Player)o1);
                     }

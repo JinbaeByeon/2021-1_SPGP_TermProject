@@ -18,32 +18,31 @@ import kr.ac.kpu.game.s2015182013.termproject.framework.Sound;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Enemy implements GameObject, BoxCollidable, Recyclable {
-    private static final int BULLET_SPEED = -1000;
-    private static float FIRE_INTERVAL = 4.0f ;
-    private float fireTime;
+    protected final int BULLET_SPEED = -1000;
+    protected float FIRE_INTERVAL = 4.0f ;
+    protected float fireTime;
     private static final int[] RESOURCE_IDS = {
             R.mipmap.enemy_a, R.mipmap.enemy_b, R.mipmap.enemy_c, R.mipmap.enemy_d
     };
     private static final String TAG = Enemy.class.getSimpleName();
-    private float x;
-    private GameBitmap planeBitmap;
-    private int hp;
-    private float y;
-    private int speed;
-    Paint paint = new Paint();
-    private int maxHp;
-    private int score;
-    private int range;
-    private int power;
-    private boolean goRight;
-    private float sx;
-    private float dirTime;
-    private Random r;
-    private AnimationGameBitmap expBitmap;
-    private float expTime;
-    private boolean isHitted;
+    protected float x;
+    protected GameBitmap planeBitmap;
+    protected int hp;
+    protected float y;
+    protected int speed;
+    protected Paint paint = new Paint();
+    protected int maxHp;
+    protected int score;
+    protected int power;
+    protected boolean goRight;
+    protected float sx;
+    protected float dirTime;
+    protected Random r;
+    protected AnimationGameBitmap expBitmap;
+    protected float expTime;
+    protected boolean isHitted;
 
-    private Enemy() {
+    protected Enemy() {
         Log.d(TAG, "Enemy constructor");
     }
 
@@ -66,7 +65,7 @@ public class Enemy implements GameObject, BoxCollidable, Recyclable {
         score = hp =maxHp = level  *100;
         sx = r.nextInt(300)+300;
         fireTime = 0.0f;
-        FIRE_INTERVAL -= (level-1);
+        FIRE_INTERVAL = 4 - (level-1);
         power = level;
         goRight = r.nextBoolean();
 
@@ -165,6 +164,7 @@ public class Enemy implements GameObject, BoxCollidable, Recyclable {
     public void recycle() {
         // 재활용통에 들어가는 시점에 불리는 함수. 현재는 할일없음.
         FIRE_INTERVAL = 4.0f ;
+        fireTime = 0;
     }
 
     @Override

@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.RectF;
 
 import java.util.HashMap;
@@ -32,9 +34,13 @@ public class GameBitmap {
     public GameBitmap(int resId) {
         bitmap = load(resId);
         setSize( bitmap.getWidth(),bitmap.getHeight());
+        paint.setColor(Color.BLUE);
+        ox =0;
     }
 
+    protected Paint paint = new Paint();
     public void draw(Canvas canvas, float x, float y) {
+        drawBoundingRect(canvas);
         //Rect srcRect = new Rect(left, )
         float dl = x - hw * GameView.MULTIPLIER;
         float dt = y - hh * GameView.MULTIPLIER;
@@ -44,6 +50,14 @@ public class GameBitmap {
         canvas.drawBitmap(bitmap, null, dstRect, null);
     }
 
+    public void drawBoundingRect(Canvas canvas){
+        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
+    }
+
+    protected int ox;
+    public void setOffset(int x) {
+        ox =x;
+    }
     public int getHeight() {
         return hh*2;
     }

@@ -41,6 +41,7 @@ public class Player implements GameObject, BoxCollidable {
         cx = x;
         cy = y;
         planeBitmap = new IndexedGameBitmap(R.mipmap.fighters,67,80,11,0,0);
+        planeBitmap.setOffset(50);
         fireBitmap = new GameBitmap(R.mipmap.laser_0);
         expBitmap = new AnimationGameBitmap(R.mipmap.hit,8,6);
         expBitmap.setSize(40,40);

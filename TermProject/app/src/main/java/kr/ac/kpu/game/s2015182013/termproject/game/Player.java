@@ -61,7 +61,7 @@ public class Player implements GameObject, BoxCollidable {
 
 
         hp =100;
-        int w = GameView.view.getWidth();
+
         int margin = (int) (20 * GameView.MULTIPLIER);
         hpBar = new Health(margin,margin,hp);
 
@@ -142,19 +142,26 @@ public class Player implements GameObject, BoxCollidable {
         hp -= damage;
         hpBar.setHP(hp);
         if(hp<=0){
-            reset();
             MainGame.get().reset();
+            reset();
         }
         expBitmap.reset();
         isHitted=true;
     }
 
     private void reset() {
+        isHitted=false;
+        expTime = 0.0f;
         fireTime = 0.0f;
         index = 5;
         power =10;
+        nBomb=1;
+
         hp =100;
         hpBar.setHP(hp);
+        MainGame game = MainGame.get();
+        game.add(MainGame.Layer.ui, hpBar);
+
     }
 
     @Override
@@ -189,7 +196,7 @@ public class Player implements GameObject, BoxCollidable {
         if(nBomb >0) {
             Bomb bomb = Bomb.get(GameView.view.getWidth()/2, GameView.view.getHeight());
             MainGame game = MainGame.get();
-            game.add(MainGame.Layer.ui, bomb);
+            game.add(MainGame.Layer.player, bomb);
             --nBomb;
         }
     }

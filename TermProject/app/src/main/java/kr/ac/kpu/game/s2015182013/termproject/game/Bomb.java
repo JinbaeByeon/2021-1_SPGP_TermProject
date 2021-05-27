@@ -6,12 +6,13 @@ import android.util.Log;
 
 import kr.ac.kpu.game.s2015182013.termproject.R;
 import kr.ac.kpu.game.s2015182013.termproject.framework.AnimationGameBitmap;
+import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
 import kr.ac.kpu.game.s2015182013.termproject.framework.IndexedAnimationGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.Recyclable;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
-public class Bomb implements GameObject, Recyclable {
+public class Bomb implements GameObject, BoxCollidable, Recyclable {
     private static final float FRAMES_PER_SECOND = 13.0f;
     private static final String TAG = Bomb.class.getSimpleName();
     private float x;
@@ -63,5 +64,15 @@ public class Bomb implements GameObject, Recyclable {
     @Override
     public void recycle() {
         // 재활용통에 들어가는 시점에 불리는 함수. 현재는 할일없음.
+    }
+
+    @Override
+    public void getBoundingRect(RectF rect) {
+        bitmap.getBoundingRect(x,y,rect);
+    }
+
+    @Override
+    public void hitBullet(int damage) {
+
     }
 }

@@ -124,8 +124,10 @@ public class MainGame {
             boolean collided = false;
             for (GameObject o2: objects_BCI) {
                 if (CollisionHelper.collides((BoxCollidable)o1, (BoxCollidable)o2)) {
-                    if(o2 instanceof Bullet)
-                        ((Bullet) o2).attack((BoxCollidable)o1);
+                    if((o1 instanceof Bomb)){}
+//                        continue;
+                    else if(o2 instanceof Bullet)
+                        ((Bullet) o2).attack((BoxCollidable) o1);
                     else if(o2 instanceof Coin)
                         score.addScore(100);
                     else if(o2 instanceof Item&& o1 instanceof Player) {

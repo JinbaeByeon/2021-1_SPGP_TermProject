@@ -108,7 +108,7 @@ public class MainGame {
         bgTitle.setSize(w/(int)GameView.MULTIPLIER,h/(int)GameView.MULTIPLIER);
 
         for (int i = 0; i < 4; i++) {
-            Button2 p1 = new Button2(w*(i*2+1)/8,h*11/16,i);
+            Button2 p1 = new Button2(w*(i*2+1)/8,h*11/16,i+1);
             add(Layer.button,p1);
         }
 

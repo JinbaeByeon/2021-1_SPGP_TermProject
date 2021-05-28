@@ -128,7 +128,7 @@ public class Enemy implements GameObject, BoxCollidable, Recyclable {
     }
 
     private void fireBullet(int offsetY) {
-        Bullet bullet = Bullet.get(this.x, this.y+offsetY, BULLET_SPEED, 10);
+        Bullet bullet = Bullet.get(this.x, this.y+offsetY, BULLET_SPEED, 10, type);
         MainGame game = MainGame.get();
         game.add(MainGame.Layer.eBullet, bullet);
     }

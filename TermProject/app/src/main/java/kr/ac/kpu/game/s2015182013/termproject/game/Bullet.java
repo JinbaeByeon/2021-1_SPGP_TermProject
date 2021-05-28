@@ -26,13 +26,13 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     }
 
     //    private static ArrayList<Bullet> recycleBin = new ArrayList<>();
-    public static Bullet get(float x, float y, int speed, int power) {
+    public static Bullet get(float x, float y, int speed, int power, int type) {
         MainGame game = MainGame.get();
         Bullet bullet = (Bullet) game.get(Bullet.class);
         if (bullet == null) {
             bullet = new Bullet(x, y, speed);
         }
-        bullet.init(x, y, speed,power,0,1);
+        bullet.init(x, y, speed,power,0,1,type);
         return bullet;
     }
 
@@ -42,11 +42,11 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
         if (bullet == null) {
             bullet = new Bullet(x, y, speed);
         }
-        bullet.init(x, y, speed,power,dx,dy);
+        bullet.init(x, y, speed,power,dx,dy, 0);
         return bullet;
     }
 
-    private void init(float x, float y, int speed, int power,float dx,float dy) {
+    private void init(float x, float y, int speed, int power, float dx, float dy, int type) {
         this.x = x;
         this.y = y;
         this.speed = -speed;

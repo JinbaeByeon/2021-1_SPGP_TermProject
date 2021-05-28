@@ -34,7 +34,7 @@ public class Player implements GameObject, BoxCollidable {
     private int power;
     private int bomb;
 
-    public Player(float x, float y) {
+    public Player(float x, float y, int type) {
         this.x = x;
         this.y = y;
         tx = x;

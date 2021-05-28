@@ -1,6 +1,8 @@
 package kr.ac.kpu.game.s2015182013.termproject.game;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -65,7 +67,16 @@ public class MainGame {
     }
 
     public enum Layer {
-        bg1, coin,item,eBullet,enemy, pBullet, player, bg2, ui, controller, LAYER_COUNT
+        bg1, coin,item,eBullet,enemy, pBullet, player, bg2, ui,button, controller, LAYER_COUNT
+    }
+
+    public void addPlayer(int type){
+        if(player == null) {
+            int w = GameView.view.getWidth();
+            int h = GameView.view.getHeight();
+            player = new Player(w / 2, h - 300,type);
+        }
+        add(Layer.player, player);
     }
     public boolean initResources() {
         if (initialized) {
@@ -76,11 +87,8 @@ public class MainGame {
 
         initLayers(Layer.LAYER_COUNT.ordinal());
 
-        if(player == null)
-            player = new Player(w/2, h - 300);
+//        addPlayer(w,h);
 
-
-        add(Layer.player, player);
         add(Layer.controller, new EnemyGenerator());
 
         int margin = (int) (20 * GameView.MULTIPLIER);
@@ -98,6 +106,11 @@ public class MainGame {
         add(Layer.bg2, clouds);
         bgTitle = new GameBitmap(R.mipmap.bg_title);
         bgTitle.setSize(w/(int)GameView.MULTIPLIER,h/(int)GameView.MULTIPLIER);
+
+        for (int i = 0; i < 4; i++) {
+            Button2 p1 = new Button2(w*(i*2+1)/8,h*11/16,i);
+            add(Layer.button,p1);
+        }
 
         initialized = true;
         scene = Scene.START;
@@ -170,13 +183,17 @@ public class MainGame {
         }
     }
 
+    Paint paint = new Paint();
     public void draw(Canvas canvas) {
         switch (scene) {
             case START: {
                 int w = GameView.view.getWidth();
                 int h = GameView.view.getHeight();
                 bgTitle.draw(canvas,w/2,h/2);
-
+                paint.setColor(Color.BLACK);
+                canvas.drawRect(0,h*5.f/8,w,h*6.f/8,paint);
+                for(GameObject o : layers.get(Layer.button.ordinal()))
+                    o.draw(canvas);
             }
             break;
             case INGAME: {
@@ -199,9 +216,17 @@ public class MainGame {
         int action = event.getAction();
         if(action == MotionEvent.ACTION_DOWN){
             if(scene== Scene.START){
-                scene = Scene.INGAME;
-                BGSound.get().playBGM();
-                return true;
+                ArrayList<GameObject> btns =  layers.get(Layer.button.ordinal());
+                for (int i = 0; i < btns.size(); i++) {
+                    Button2 btn = (Button2)btns.get(i);
+                    if(btn.isClicked(event.getX(), event.getY())){
+                        scene = Scene.INGAME;
+                        BGSound.get().playBGM();
+                        addPlayer(i);
+                        layers.remove(Layer.button.ordinal());
+                        return true;
+                    }
+                }
             }
             else if(scene == Scene.INGAME) {
                 player.setPivot(event.getX(), event.getY());

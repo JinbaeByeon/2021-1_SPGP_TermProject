@@ -1,8 +1,6 @@
 package kr.ac.kpu.game.s2015182013.termproject.game;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.RectF;
 import android.util.Log;
 
 
@@ -118,7 +116,7 @@ public class Boss extends Enemy {
         else if(type==1){
             int w = GameView.view.getWidth();
             for(int i=0; i<w;i+=200){
-                bullet = Bullet.get(i,y,BULLET_SPEED,power);
+                bullet = Bullet.get(i,y,BULLET_SPEED,power, type);
                 game.add(MainGame.Layer.eBullet,bullet);
             }
         }

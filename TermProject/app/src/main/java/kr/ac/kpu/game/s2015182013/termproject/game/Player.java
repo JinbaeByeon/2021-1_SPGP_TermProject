@@ -19,6 +19,7 @@ public class Player implements GameObject, BoxCollidable {
     private static final float LASER_DURATION = FIRE_INTERVAL / 3;
     private final Health hpBar;
     private final AnimationGameBitmap expBitmap;
+    private final int type;
     private float expTime;
     private boolean isHitted;
     private float fireTime;
@@ -34,7 +35,10 @@ public class Player implements GameObject, BoxCollidable {
     private int power;
     private int nBomb;
 
-    public Player(float x, float y) {
+    enum Type{
+        p1,p2,p3,p4
+    }
+    public Player(float x, float y, int type) {
         this.x = x;
         this.y = y;
         tx = x;
@@ -42,11 +46,16 @@ public class Player implements GameObject, BoxCollidable {
         cx = x;
         cy = y;
 
-        planeBitmap = new IndexedGameBitmap(R.mipmap.player1,67,80,11,0,0);
-        planeBitmap.setOffset(50);
-        index = 5;
-        power =10;
         isHitted=false;
+
+        this.type = type;
+        if(type == Type.p1.ordinal()) {
+            planeBitmap = new IndexedGameBitmap(R.mipmap.player1, 67, 80, 11, 0, 0);
+            planeBitmap.setOffset(50);
+            index = 5;
+            power =10;
+            hp =100;
+        }
 
         fireBitmap = new GameBitmap(R.mipmap.laser_0);
         fireTime = 0.0f;
@@ -57,8 +66,6 @@ public class Player implements GameObject, BoxCollidable {
 
         nBomb = 1;
 
-
-        hp =100;
 
         int margin = (int) (20 * GameView.MULTIPLIER);
         hpBar = new Health(margin,margin,hp);
@@ -83,12 +90,14 @@ public class Player implements GameObject, BoxCollidable {
         MainGame game = MainGame.get();
 
         float dx = (tx-cx)/5;
+        int xcount = planeBitmap.getXcount();
+
         if(dx<-EPSILON&& index>0)
             index= index -0.3f;
-        else if(dx>EPSILON&&index<10)
+        else if(dx>EPSILON&&index<xcount-1)
             index= index +0.3f;
         else if(dx<=EPSILON&& dx>=-EPSILON) {
-            index = 5;
+            index = xcount/2;
             cx =tx;
             cy =ty;
         }
@@ -120,7 +129,7 @@ public class Player implements GameObject, BoxCollidable {
     }
 
     private void fireBullet() {
-        Bullet bullet = Bullet.get(this.x, this.y, BULLET_SPEED,power);
+        Bullet bullet = Bullet.get(this.x, this.y, BULLET_SPEED,power,type);
         MainGame game = MainGame.get();
         game.add(MainGame.Layer.pBullet, bullet);
     }

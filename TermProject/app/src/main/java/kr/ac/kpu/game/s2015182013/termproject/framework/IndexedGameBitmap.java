@@ -51,4 +51,8 @@ public class IndexedGameBitmap extends GameBitmap {
         rect.set(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom);
     }
 
+
+    public int getXcount() {
+        return xcount;
+    }
 }

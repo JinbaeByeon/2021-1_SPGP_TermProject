@@ -14,8 +14,8 @@ import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class GameBitmap {
     private static HashMap<Integer, Bitmap> bitmaps = new HashMap<Integer, Bitmap>();
-    private int hw;
-    private int hh;
+    protected int hw;
+    protected int hh;
 
     public static Bitmap load(int resId) {
         Bitmap bitmap = bitmaps.get(resId);
@@ -35,6 +35,8 @@ public class GameBitmap {
         bitmap = load(resId);
         setSize( bitmap.getWidth(),bitmap.getHeight());
         paint.setColor(Color.BLUE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(3);
         ox =0;
     }
 
@@ -52,7 +54,7 @@ public class GameBitmap {
 
     // 바운딩박스 그리기
     public void drawBoundingRect(Canvas canvas){
-//        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
+        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
     }
 
     protected int ox;

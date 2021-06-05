@@ -20,6 +20,9 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     private int power;
     private float dx,dy;
 
+    private static final int[] RESOURCE_IDS = {
+            R.mipmap.bullet1, R.mipmap.bullet2, R.mipmap.bullet3, R.mipmap.bullet4
+    };
     private Bullet(float x, float y, int speed) {
 
         Log.d(TAG, "loading bitmap for bullet");
@@ -54,8 +57,10 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
         this.dx =dx;
         this.dy= dy;
 
-        if(speed>0)
-            bitmap = new GameBitmap(R.mipmap.laser_1);
+        if(speed>0) {
+            bitmap = new GameBitmap(RESOURCE_IDS[type]);
+            bitmap.setSize(30,40);
+        }
         else {
             bitmap = new GameBitmap(R.mipmap.e_missile);
             bitmap.setSize(20,20);

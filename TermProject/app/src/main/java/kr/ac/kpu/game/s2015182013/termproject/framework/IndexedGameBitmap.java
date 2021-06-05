@@ -20,6 +20,10 @@ public class IndexedGameBitmap extends GameBitmap {
         this.xcount = xcount;
         this.border = border;
         this.spacing = spacing;
+
+        hw = (int) (width / 2 * GameView.MULTIPLIER);
+        hh = (int) (height / 2 * GameView.MULTIPLIER);
+        setIndex(xcount/2);
     }
 
     protected Rect srcRect = new Rect();
@@ -35,8 +39,6 @@ public class IndexedGameBitmap extends GameBitmap {
 
     @Override
     public void draw(Canvas canvas, float x, float y) {
-        float hw = width / 2 * GameView.MULTIPLIER;
-        float hh = height / 2 * GameView.MULTIPLIER;
         dstRect.set(x - hw, y - hh, x + hw, y + hh);
         drawBoundingRect(canvas);
         canvas.drawBitmap(bitmap, srcRect, dstRect, null);

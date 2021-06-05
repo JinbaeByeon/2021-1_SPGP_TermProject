@@ -1,6 +1,8 @@
 package kr.ac.kpu.game.s2015182013.termproject.game;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.Log;
 
@@ -15,13 +17,15 @@ import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Button2 implements GameObject, BoxCollidable, Recyclable {
     private static final String TAG = Button2.class.getSimpleName();
+    private final Paint boxPaint = new Paint();
+    public boolean selected;
     private float x;
     private GameBitmap bitmap;
     private float y;
     private float r;
 
     enum Type{
-        bomb, p1,p2,p3,p4
+        p1,p2,p3,p4,bomb
     }
     public Button2(float x, float y, int type) {
 
@@ -29,19 +33,23 @@ public class Button2 implements GameObject, BoxCollidable, Recyclable {
         this.x = x;
         this.y = y;
 
-        if(type==Type.p1.ordinal())
-            bitmap = new GameBitmap(R.mipmap.enemy_a);
-        if(type==Type.p2.ordinal())
-            bitmap = new GameBitmap(R.mipmap.enemy_b);
-        if(type==Type.p3.ordinal())
-            bitmap = new GameBitmap(R.mipmap.enemy_c);
-        if(type==Type.p4.ordinal())
-            bitmap = new GameBitmap(R.mipmap.enemy_d);
+        bitmap = new IndexedGameBitmap(Player.RESOURCE_IDS[type],
+                Player.RESOURCE_STATS[type].width,
+                Player.RESOURCE_STATS[type].height,
+                Player.RESOURCE_STATS[type].xcount,
+                Player.RESOURCE_STATS[type].border,
+                Player.RESOURCE_STATS[type].spacing);
+        bitmap.setSize(150,150);
 //        bitmap = new IndexedGameBitmap(R.mipmap.fighters,67,80,11,0,0);
 //        bitmap.setIndex(5);
         int w = bitmap.getWidth();
         int h = bitmap.getHeight();
-        r = w<h?w:h;
+        r = w<h?w/2:h/2;
+
+        selected = false;
+        boxPaint.setColor(Color.RED);
+        boxPaint.setStyle(Paint.Style.STROKE);
+        boxPaint.setStrokeWidth(3);
     }
 
 
@@ -53,6 +61,15 @@ public class Button2 implements GameObject, BoxCollidable, Recyclable {
     @Override
     public void draw(Canvas canvas) {
         bitmap.draw(canvas, x, y);
+        if(selected)
+            drawBox(canvas);
+    }
+
+    private void drawBox(Canvas canvas) {
+        int w = GameView.view.getWidth();
+        int h = GameView.view.getHeight();
+        canvas.drawRect(x-w/8,h*5.f/8,x+w/8,h*6.f/8, boxPaint);
+        Log.d(TAG,"asdasd");
     }
 
     @Override
@@ -77,4 +94,5 @@ public class Button2 implements GameObject, BoxCollidable, Recyclable {
             return true;
         return false;
     }
+
 }

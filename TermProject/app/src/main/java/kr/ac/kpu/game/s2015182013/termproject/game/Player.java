@@ -12,6 +12,21 @@ import kr.ac.kpu.game.s2015182013.termproject.framework.IndexedGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Player implements GameObject, BoxCollidable {
+
+    public static class Resource{
+        int width;
+        int height;
+        int xcount;
+        int border;
+        int spacing;
+        public Resource(int w,int h, int xc, int b, int s){
+            width =w;
+            height =h;
+            xcount =xc;
+            border = b;
+            spacing =s;
+        };
+    }
     private final float EPSILON = 0.1f;
     private static final String TAG = Player.class.getSimpleName();
     private static final int BULLET_SPEED = 1500;
@@ -28,6 +43,15 @@ public class Player implements GameObject, BoxCollidable {
     private IndexedGameBitmap planeBitmap;
     private GameBitmap fireBitmap;
 
+    public static final int[] RESOURCE_IDS = {
+            R.mipmap.player1, R.mipmap.player2, R.mipmap.player3, R.mipmap.player4
+    };
+    public static final Resource[] RESOURCE_STATS = {
+            new Resource(67,80,11,0,0),
+            new Resource(32,40,14,0,0),
+            new Resource(31,38,7,0,0),
+            new Resource(32,34,7,0,0)
+    };
     private float cx;
     private float cy;
     private float index;
@@ -49,13 +73,19 @@ public class Player implements GameObject, BoxCollidable {
         isHitted=false;
 
         this.type = type;
-        if(type == Type.p1.ordinal()) {
-            planeBitmap = new IndexedGameBitmap(R.mipmap.player1, 67, 80, 11, 0, 0);
-            planeBitmap.setOffset(50);
-            index = 5;
-            power =10;
-            hp =100;
-        }
+        planeBitmap = new IndexedGameBitmap(RESOURCE_IDS[type],
+                RESOURCE_STATS[type].width,
+                RESOURCE_STATS[type].height,
+                RESOURCE_STATS[type].xcount,
+                RESOURCE_STATS[type].border,
+                RESOURCE_STATS[type].spacing);
+
+        planeBitmap.setOffset(50);
+        planeBitmap.setSize(130,130);
+
+        index = planeBitmap.getXcount()/2;
+        power =10;
+        hp =100;
 
         fireBitmap = new GameBitmap(R.mipmap.laser_0);
         fireTime = 0.0f;
@@ -164,10 +194,13 @@ public class Player implements GameObject, BoxCollidable {
         power =10;
         nBomb=1;
 
-        hp =100;
-        hpBar.setHP(hp);
-        MainGame game = MainGame.get();
-        game.add(MainGame.Layer.ui, hpBar);
+        x =GameView.view.getWidth()/2;
+        y = GameView.view.getHeight()-300;
+
+//        hp =100;
+//        hpBar.setHP(hp);
+//        MainGame game = MainGame.get();
+//        game.add(MainGame.Layer.ui, hpBar);
 
     }
 

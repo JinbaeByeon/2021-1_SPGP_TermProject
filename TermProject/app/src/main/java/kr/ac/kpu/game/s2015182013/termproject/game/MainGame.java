@@ -72,11 +72,10 @@ public class MainGame {
     }
 
     public void addPlayer(int type){
-        if(player == null) {
-            int w = GameView.view.getWidth();
-            int h = GameView.view.getHeight();
-            player = new Player(w / 2, h - 300,type);
-        }
+        int w = GameView.view.getWidth();
+        int h = GameView.view.getHeight();
+        player = new Player(w / 2, h - 300,type);
+
         add(Layer.player, player);
     }
     public boolean initResources() {
@@ -89,6 +88,7 @@ public class MainGame {
         initLayers(Layer.LAYER_COUNT.ordinal());
 
 //        addPlayer(w,h);
+
 
         add(Layer.controller, new EnemyGenerator());
 
@@ -111,7 +111,7 @@ public class MainGame {
 
 
         for (int i = 0; i < 4; i++) {
-            Button2 p1 = new Button2(w*(i*2+1)/8,h*11/16,i+1);
+            Button2 p1 = new Button2(w*(i*2+1)/8,h*11/16,i);
             add(Layer.button,p1);
         }
 
@@ -191,15 +191,15 @@ public class MainGame {
         }
     }
 
-    Paint paint = new Paint();
+    Paint bgpaint = new Paint();
     public void draw(Canvas canvas) {
         switch (scene) {
             case START: {
                 int w = GameView.view.getWidth();
                 int h = GameView.view.getHeight();
                 bgTitle.draw(canvas,w/2,h/2);
-                paint.setColor(Color.BLACK);
-                canvas.drawRect(0,h*5.f/8,w,h*6.f/8,paint);
+                bgpaint.setColor(Color.BLACK);
+                canvas.drawRect(0,h*5.f/8,w,h*6.f/8, bgpaint);
                 for(GameObject o : layers.get(Layer.button.ordinal()))
                     o.draw(canvas);
             }
@@ -222,29 +222,47 @@ public class MainGame {
     public boolean onTouchEvent(MotionEvent event) {
 
         int action = event.getAction();
-        if(action == MotionEvent.ACTION_DOWN){
-            if(scene== Scene.START){
-                ArrayList<GameObject> btns =  layers.get(Layer.button.ordinal());
+        if(scene== Scene.START){
+            ArrayList<GameObject> btns =  layers.get(Layer.button.ordinal());
+            if(action==MotionEvent.ACTION_UP) {
                 for (int i = 0; i < btns.size(); i++) {
-                    Button2 btn = (Button2)btns.get(i);
-                    if(btn.isClicked(event.getX(), event.getY())){
+                    Button2 btn = (Button2) btns.get(i);
+                    if (btn.isClicked(event.getX(), event.getY())) {
                         scene = Scene.INGAME;
                         BGSound.get().playBGM();
                         addPlayer(i);
                         layers.remove(Layer.button.ordinal());
 
-                        if(button==null){
+                        if (button == null) {
                             int w = GameView.view.getWidth();
                             int h = GameView.view.getHeight();
-                            button = new Button(w-100.f,h-100.f);
+                            button = new Button(w - 100.f, h - 100.f);
                         }
-                        add(Layer.button,button);
+                        add(Layer.button, button);
 
                         return true;
                     }
                 }
             }
-            else if(scene == Scene.INGAME) {
+            else {
+                boolean isSelect = false;
+                for (int i = 0; i < btns.size(); i++) {
+                    Button2 btn = (Button2)btns.get(i);
+                    if(btn.isClicked(event.getX(), event.getY())){
+                        btn.selected = true;
+                        isSelect =true;
+                    }
+                    else
+                        btn.selected =false;
+                }
+                if(isSelect)
+                    return true;
+            }
+        }
+
+
+        if(action == MotionEvent.ACTION_DOWN){
+            if(scene == Scene.INGAME) {
                 if (button.isClicked(event.getX(), event.getY())) {
                     player.shotBomb();
                 }
@@ -260,6 +278,7 @@ public class MainGame {
                 return true;
             }
         }
+
         return false;
     }
 

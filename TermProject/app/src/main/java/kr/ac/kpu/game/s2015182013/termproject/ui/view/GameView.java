@@ -83,7 +83,7 @@ public class GameView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         MainGame game = MainGame.get();
-//        Log.d(TAG,"event: " + event.toString());
+        Log.d(TAG,"event: " + event.toString());
         return game.onTouchEvent(event);
     }
 

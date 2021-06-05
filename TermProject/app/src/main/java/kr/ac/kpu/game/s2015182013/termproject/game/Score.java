@@ -67,7 +67,7 @@ public class Score implements GameObject {
     @Override
     public void update() {
         if (displayScore < score) {
-            displayScore++;
+            displayScore+=10;
         }
     }
 

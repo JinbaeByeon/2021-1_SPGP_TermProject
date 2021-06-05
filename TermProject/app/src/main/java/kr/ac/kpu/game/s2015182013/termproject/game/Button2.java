@@ -27,6 +27,7 @@ public class Button2 implements GameObject, BoxCollidable, Recyclable {
     enum Type{
         p1,p2,p3,p4,bomb
     }
+
     public Button2(float x, float y, int type) {
 
         Log.d(TAG, "loading bitmap for button");
@@ -69,7 +70,6 @@ public class Button2 implements GameObject, BoxCollidable, Recyclable {
         int w = GameView.view.getWidth();
         int h = GameView.view.getHeight();
         canvas.drawRect(x-w/8,h*5.f/8,x+w/8,h*6.f/8, boxPaint);
-        Log.d(TAG,"asdasd");
     }
 
     @Override

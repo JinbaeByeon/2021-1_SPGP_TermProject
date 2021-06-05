@@ -54,7 +54,7 @@ public class GameBitmap {
 
     // 바운딩박스 그리기
     public void drawBoundingRect(Canvas canvas){
-        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
+//        canvas.drawRect(dstRect.left + ox/2,dstRect.top,dstRect.right- ox/2,dstRect.bottom,paint);
     }
 
     protected int ox;

@@ -31,6 +31,16 @@ public class Button implements GameObject {
         icon = new GameBitmap(R.mipmap.icon_bomb);
         icon.setSize(r,r);
     }
+    public Button(float x, float y,int resId) {
+        Log.d(TAG, "loading bitmap for button");
+
+        this.x = x;
+        this.y = y;
+        this.r = 80;
+
+        button = new GameBitmap(resId);
+        button.setSize(r,r);
+    }
 
 
     @Override

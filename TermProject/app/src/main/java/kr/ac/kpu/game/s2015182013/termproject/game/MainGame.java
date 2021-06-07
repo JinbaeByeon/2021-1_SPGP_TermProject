@@ -3,6 +3,7 @@ package kr.ac.kpu.game.s2015182013.termproject.game;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
 import kr.ac.kpu.game.s2015182013.termproject.framework.Recyclable;
+import kr.ac.kpu.game.s2015182013.termproject.ui.activity.MainActivity;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 import kr.ac.kpu.game.s2015182013.termproject.utils.CollisionHelper;
 
@@ -36,7 +38,7 @@ public class MainGame {
     }
     public float frameTime;
     private boolean initialized;
-    private Scene scene;
+    private Scene scene = Scene.START;
     private enum Scene{
         START,INGAME,END
     }
@@ -49,7 +51,16 @@ public class MainGame {
         recycleBin.clear();
         layers.clear();
         initialized = false;
-        initResources();
+        if(scene ==Scene.INGAME) {
+            initLayers(Layer.LAYER_COUNT.ordinal());
+            int w = GameView.view.getWidth();
+            int h = GameView.view.getHeight();
+            scene = Scene.END;
+            Button btn_restart = new Button(w/4,h/2,R.mipmap.btn_restart);
+            Button btn_exit = new Button(w*3/4,h/2,R.mipmap.btn_exit);
+            add(Layer.button,btn_restart);
+            add(Layer.button,btn_exit);
+        }
     }
 
     public void recycle(GameObject object) {
@@ -117,7 +128,7 @@ public class MainGame {
 
 
         initialized = true;
-        scene = Scene.START;
+
         if(BGSound.get().isPlaying())
             BGSound.get().pause();
         return true;
@@ -204,7 +215,7 @@ public class MainGame {
                     o.draw(canvas);
             }
             break;
-            case INGAME: {
+            case INGAME:  {
 
                 //if (!initialized) return;
                 for (ArrayList<GameObject> objects : layers) {
@@ -213,8 +224,12 @@ public class MainGame {
                     }
                 }
             }
-            case END: {
-
+            break;
+            case END:{
+                ArrayList<GameObject> buttons = layers.get(Layer.button.ordinal());
+                for (GameObject o : buttons) {
+                    o.draw(canvas);
+                }
             }
         }
     }
@@ -259,24 +274,36 @@ public class MainGame {
                     return true;
             }
         }
-
-
-        if(action == MotionEvent.ACTION_DOWN){
-            if(scene == Scene.INGAME) {
+        else if(scene == Scene.INGAME) {
+            if (action == MotionEvent.ACTION_DOWN) {
                 if (button.isClicked(event.getX(), event.getY())) {
                     player.shotBomb();
                 }
                 player.setPivot(event.getX(), event.getY());
-            }
-            else if(scene == Scene.END){
 
             }
-        }
-        if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE) {
-            if(scene == Scene.INGAME) {
+            if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE) {
                 player.moveTo(event.getX(), event.getY());
                 return true;
             }
+        }
+        else if(scene == Scene.END){
+            ArrayList<GameObject> btns =  layers.get(Layer.button.ordinal());
+
+            if(action==MotionEvent.ACTION_DOWN) {
+                if (((Button) btns.get(0)).isClicked(event.getX(), event.getY())) {
+                    scene = Scene.START;
+                    layers.remove(Layer.button.ordinal());
+                    initResources();
+                    Log.d(TAG,"restart");
+                } else if (((Button) btns.get(1)).isClicked(event.getX(), event.getY())) {
+                    GameView.view.finishActivity();
+                    scene = Scene.START;
+                    layers.remove(Layer.button.ordinal());
+                    Log.d(TAG,"exit");
+                }
+            }
+
         }
 
         return false;
@@ -286,6 +313,7 @@ public class MainGame {
         GameView.view.post(new Runnable() {
             @Override
             public void run() {
+                if(layers==null) return;
                 ArrayList<GameObject> objects = layers.get(layer.ordinal());
                 objects.add(gameObject);
             }

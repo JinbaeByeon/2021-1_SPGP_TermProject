@@ -85,7 +85,7 @@ public class Player implements GameObject, BoxCollidable {
 
         index = planeBitmap.getXcount()/2;
         power =10;
-        hp =100;
+        hp =10;
 
         fireBitmap = new GameBitmap(R.mipmap.laser_0);
         fireTime = 0.0f;
@@ -152,7 +152,7 @@ public class Player implements GameObject, BoxCollidable {
         }
         fireTime += game.frameTime;
 
-        if (fireTime >= FIRE_INTERVAL) {
+        if (fireTime >= FIRE_INTERVAL&& hp>0) {
             fireBullet();
             fireTime -= FIRE_INTERVAL;
         }

@@ -13,6 +13,13 @@ import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Player implements GameObject, BoxCollidable {
 
+    private final int[] powers={
+            10,15,20,5
+    };
+    private final int[] health={
+            100,80,60,150
+    };
+
     public static class Resource{
         int width;
         int height;
@@ -52,6 +59,7 @@ public class Player implements GameObject, BoxCollidable {
             new Resource(31,38,7,0,0),
             new Resource(32,34,7,0,0)
     };
+
     private float cx;
     private float cy;
     private float index;
@@ -84,8 +92,8 @@ public class Player implements GameObject, BoxCollidable {
         planeBitmap.setSize(130,130);
 
         index = planeBitmap.getXcount()/2;
-        power =10;
-        hp =10;
+        power = powers[type];
+        hp = health[type];
 
         fireBitmap = new GameBitmap(R.mipmap.laser_0);
         fireTime = 0.0f;
@@ -214,8 +222,8 @@ public class Player implements GameObject, BoxCollidable {
         switch (type){
             case Power:
                 power+=10;
-                if(power>100)
-                    power=100;
+                if(power>powers[this.type]*10)
+                    power=powers[this.type]*10;
                 break;
             case Bomb:
                 if(nBomb<3) {
@@ -224,8 +232,8 @@ public class Player implements GameObject, BoxCollidable {
                 break;
             case Health:
                 hp+=30;
-                if(hp>100)
-                    hp=100;
+                if(hp>health[this.type])
+                    hp=health[this.type];
                 hpBar.setHP(hp);
                 break;
 

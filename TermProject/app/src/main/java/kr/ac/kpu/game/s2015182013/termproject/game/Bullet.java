@@ -8,6 +8,7 @@ import kr.ac.kpu.game.s2015182013.termproject.R;
 import kr.ac.kpu.game.s2015182013.termproject.framework.BoxCollidable;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.GameObject;
+import kr.ac.kpu.game.s2015182013.termproject.framework.IndexedGameBitmap;
 import kr.ac.kpu.game.s2015182013.termproject.framework.Recyclable;
 import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
@@ -20,14 +21,20 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     private int power;
     private float dx,dy;
 
-    private static final int[] RESOURCE_IDS = {
-            R.mipmap.bullet1, R.mipmap.bullet2, R.mipmap.bullet3, R.mipmap.bullet4
+    private final int[] RESOURCE_IDS = {
+            R.mipmap.bullets1, R.mipmap.bullets2, R.mipmap.bullets3, R.mipmap.bullets4
     };
     private Bullet(float x, float y, int speed) {
 
         Log.d(TAG, "loading bitmap for bullet");
     }
 
+    public static final Player.Resource[] RESOURCE_STATS = {
+            new Player.Resource(67,80,11,0,0),
+            new Player.Resource(32,40,14,0,0),
+            new Player.Resource(31,38,7,0,0),
+            new Player.Resource(32,34,7,0,0)
+    };
     //    private static ArrayList<Bullet> recycleBin = new ArrayList<>();
     public static Bullet get(float x, float y, int speed, int power, int type) {
         MainGame game = MainGame.get();
@@ -58,7 +65,7 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
         this.dy= dy;
 
         if(speed>0) {
-            bitmap = new GameBitmap(RESOURCE_IDS[type]);
+            bitmap = new IndexedGameBitmap(RESOURCE_IDS[type],);
             bitmap.setSize(30,40);
         }
         else {

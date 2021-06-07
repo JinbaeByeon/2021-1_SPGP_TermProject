@@ -107,6 +107,7 @@ public class GameView extends View {
         activity.finish();
         lastFrame = 0;
         running = false;
+        bgSound.stop();
     }
 
     private Activity getActivity() {

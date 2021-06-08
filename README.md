@@ -56,7 +56,7 @@
 
 - 보스
 
-![image](https://user-images.githubusercontent.com/22373033/121117901-dff2bc80-c853-11eb-9d2a-ce577117840a.png)
+![image](https://user-images.githubusercontent.com/22373033/121119121-0b76a680-c856-11eb-8b76-6cea4ea640c0.png)
 
 
 (좌측 상단에는 플레이어 체력바, 우측 하단에는 폭탄 버튼이 존재하며 그 위에 있는 폭탄 아이콘은 플레이어가 갖고 있는 폭탄의 양을 나타낸다)

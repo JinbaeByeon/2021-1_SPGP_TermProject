@@ -25,39 +25,31 @@
 
 ### commit log
 
-주차 | 횟수
-:-----: | :-----:
-1주차 | 3
-![image](https://user-images.githubusercontent.com/22373033/121112094-e892c500-c84a-11eb-8285-9986a709f89b.png)
+주차 | 횟수| 
+:-----: | :-----:|
+1주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112094-e892c500-c84a-11eb-8285-9986a709f89b.png)
 
 
-2주차 | 5
-![image](https://user-images.githubusercontent.com/22373033/121112139-f8120e00-c84a-11eb-8cc2-2fab1d70eb66.png)
+2주차 | 5 | ![image](https://user-images.githubusercontent.com/22373033/121112139-f8120e00-c84a-11eb-8cc2-2fab1d70eb66.png)
 
 
-3주차 | 2
-![image](https://user-images.githubusercontent.com/22373033/121112165-ffd1b280-c84a-11eb-8e60-833dc25f271c.png)
+3주차 | 2 | ![image](https://user-images.githubusercontent.com/22373033/121112165-ffd1b280-c84a-11eb-8e60-833dc25f271c.png)
 
 
-4주차 | 0
+4주차 | 0 | 
 
-5주차 | 3
-![image](https://user-images.githubusercontent.com/22373033/121112186-0829ed80-c84b-11eb-9d1c-ae3a42c00d2c.png)
-
-
-6주차 | 12
-![image](https://user-images.githubusercontent.com/22373033/121112245-1d9f1780-c84b-11eb-9ba5-ab2cb11c0c5f.png)
-
-7주차 | 5
-![image](https://user-images.githubusercontent.com/22373033/121112264-24c62580-c84b-11eb-894f-159ab7ef31ab.png)
+5주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112186-0829ed80-c84b-11eb-9d1c-ae3a42c00d2c.png)
 
 
-8주차 | -
-![image](https://user-images.githubusercontent.com/22373033/121112306-314a7e00-c84b-11eb-919b-7cf9bf39248a.png)
+6주차 | 12 | ![image](https://user-images.githubusercontent.com/22373033/121112245-1d9f1780-c84b-11eb-9ba5-ab2cb11c0c5f.png)
+
+7주차 | 5 | ![image](https://user-images.githubusercontent.com/22373033/121112264-24c62580-c84b-11eb-894f-159ab7ef31ab.png)
 
 
-9주차 | -
-![image](https://user-images.githubusercontent.com/22373033/121112338-3a3b4f80-c84b-11eb-8d7b-3b796679db07.png)
+8주차 | 10 | ![image](https://user-images.githubusercontent.com/22373033/121112306-314a7e00-c84b-11eb-919b-7cf9bf39248a.png)
+
+
+9주차 + 10주차 | 6 | ![image](https://user-images.githubusercontent.com/22373033/121112338-3a3b4f80-c84b-11eb-8d7b-3b796679db07.png)
 
 ![image](https://user-images.githubusercontent.com/22373033/121112360-40c9c700-c84b-11eb-916b-9592735533c7.png)
 

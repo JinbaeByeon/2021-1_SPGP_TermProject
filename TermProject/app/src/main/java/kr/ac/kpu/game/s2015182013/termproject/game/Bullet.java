@@ -30,10 +30,10 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
     }
 
     public static final Player.Resource[] RESOURCE_STATS = {
-            new Player.Resource(67,80,11,0,0),
-            new Player.Resource(32,40,14,0,0),
-            new Player.Resource(31,38,7,0,0),
-            new Player.Resource(32,34,7,0,0)
+            new Player.Resource(27,47,4,0,0),
+            new Player.Resource(15,29,4,0,0),
+            new Player.Resource(21,48,4,0,0),
+            new Player.Resource(13,31,4,0,0)
     };
     //    private static ArrayList<Bullet> recycleBin = new ArrayList<>();
     public static Bullet get(float x, float y, int speed, int power, int type) {
@@ -65,8 +65,25 @@ public class Bullet implements GameObject, BoxCollidable, Recyclable {
         this.dy= dy;
 
         if(speed>0) {
-            bitmap = new IndexedGameBitmap(RESOURCE_IDS[type],);
-            bitmap.setSize(30,40);
+            bitmap = new IndexedGameBitmap(RESOURCE_IDS[type],
+                    RESOURCE_STATS[type].width,
+                    RESOURCE_STATS[type].height,
+                    RESOURCE_STATS[type].xcount,
+                    RESOURCE_STATS[type].border,
+                    RESOURCE_STATS[type].spacing);
+            if(power<=30){
+                ((IndexedGameBitmap)bitmap).setIndex(0);
+                ((IndexedGameBitmap)bitmap).setOffset(50);
+            } else if(power<=60){
+                ((IndexedGameBitmap)bitmap).setIndex(1);
+                ((IndexedGameBitmap)bitmap).setOffset(30);
+            } else if(power<=90){
+                ((IndexedGameBitmap)bitmap).setIndex(2);
+                ((IndexedGameBitmap)bitmap).setOffset(10);
+            } else {
+                ((IndexedGameBitmap)bitmap).setIndex(3);
+            }
+            bitmap.setSize(100,100);
         }
         else {
             bitmap = new GameBitmap(R.mipmap.e_missile);

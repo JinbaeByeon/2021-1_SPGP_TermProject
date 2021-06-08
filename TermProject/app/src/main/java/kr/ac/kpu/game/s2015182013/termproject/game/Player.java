@@ -13,7 +13,7 @@ import kr.ac.kpu.game.s2015182013.termproject.ui.view.GameView;
 
 public class Player implements GameObject, BoxCollidable {
 
-    private final int[] powers={
+    private static final int[] powers={
             10,15,20,5
     };
     private final int[] health={
@@ -222,8 +222,8 @@ public class Player implements GameObject, BoxCollidable {
         switch (type){
             case Power:
                 power+=10;
-                if(power>powers[this.type]*10)
-                    power=powers[this.type]*10;
+                if(power>120)
+                    power=120;
                 break;
             case Bomb:
                 if(nBomb<3) {

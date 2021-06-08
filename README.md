@@ -11,15 +11,15 @@
 
 주차 | 내용 | 완성도
 :-----: | :-----: | :-----:
-1주차 | 리소스 수집 | 80%, 추가로 필요한 부분 계속 수집
+1주차 | 리소스 수집 |100%
 2주차 | 프레임워크 개발 | 100%
 3주차 | 플레이어 공격 구현 | 100%
-4주차 | 플레이어 이동 구현 | 90%, 부드러운 이동으로 변경 예정
-5주차 | 적 유닛 이동 및 공격 구현 | 70%, 보스 미완성
-6주차 | 아이템 및 충돌처리 구현 | 80%, 폭탄 미완성
-7주차 | 시작 UI 구현 | 60%, 캐릭터 선택 미완성
+4주차 | 플레이어 이동 구현 | 100%
+5주차 | 적 유닛 이동 및 공격 구현 | 100%
+6주차 | 아이템 및 충돌처리 구현 | 100%
+7주차 | 시작 UI 구현 | 100%
 8주차 | 사운드 구현 | 100%
-9주차 | 버그 수정 | 진행중
+9주차 | 버그 수정 | 100%
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -28,14 +28,39 @@
 주차 | 횟수
 :-----: | :-----:
 1주차 | 3
+![image](https://user-images.githubusercontent.com/22373033/121112094-e892c500-c84a-11eb-8285-9986a709f89b.png)
+
+
 2주차 | 5
+![image](https://user-images.githubusercontent.com/22373033/121112139-f8120e00-c84a-11eb-8cc2-2fab1d70eb66.png)
+
+
 3주차 | 2
+![image](https://user-images.githubusercontent.com/22373033/121112165-ffd1b280-c84a-11eb-8e60-833dc25f271c.png)
+
+
 4주차 | 0
+
 5주차 | 3
+![image](https://user-images.githubusercontent.com/22373033/121112186-0829ed80-c84b-11eb-9d1c-ae3a42c00d2c.png)
+
+
 6주차 | 12
+![image](https://user-images.githubusercontent.com/22373033/121112245-1d9f1780-c84b-11eb-9ba5-ab2cb11c0c5f.png)
+
 7주차 | 5
+![image](https://user-images.githubusercontent.com/22373033/121112264-24c62580-c84b-11eb-894f-159ab7ef31ab.png)
+
+
 8주차 | -
+![image](https://user-images.githubusercontent.com/22373033/121112306-314a7e00-c84b-11eb-919b-7cf9bf39248a.png)
+
+
 9주차 | -
+![image](https://user-images.githubusercontent.com/22373033/121112338-3a3b4f80-c84b-11eb-8d7b-3b796679db07.png)
+
+![image](https://user-images.githubusercontent.com/22373033/121112360-40c9c700-c84b-11eb-916b-9592735533c7.png)
+
 합계 | 30
 
 

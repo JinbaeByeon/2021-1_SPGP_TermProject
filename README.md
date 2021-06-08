@@ -7,137 +7,63 @@
   
 ---------------------------------------------------------------------------------------------------------------
 
-### 진행 상황
+### 개발 계획/일정/실제 진행
 
-주차 | 내용 | 완성도
-:-----: | :-----: | :-----:
-1주차 | 리소스 수집 |100%
-2주차 | 프레임워크 개발 | 100%
-3주차 | 플레이어 공격 구현 | 100%
-4주차 | 플레이어 이동 구현 | 100%
-5주차 | 적 유닛 이동 및 공격 구현 | 100%
-6주차 | 아이템 및 충돌처리 구현 | 100%
-7주차 | 시작 UI 구현 | 100%
-8주차 | 사운드 구현 | 100%
-9주차 | 버그 수정 | 100%
+주차 | 내용 | 완성도 | 비고
+:-----: | :-----: | :-----: | :-----:
+1주차 | 리소스 수집 |100% | -
+2주차 | 프레임워크 개발 | 100% | -
+3주차 | 플레이어 공격 구현 | 100% | 파워에 따른 총알 업그레이드 적용
+4주차 | 플레이어 이동 구현 | 100% | 부드러운 이동 적용
+5주차 | 적 유닛 이동 및 공격 구현 | 100% | 보스 2개체 패턴 3가지 적용 
+6주차 | 아이템 및 충돌처리 구현 | 100% |
+7주차 | 시작 UI 구현 | 100% | 플레이어 4 종류 선택 가능
+8주차 | 사운드 구현 | 100%  | -
+9주차 | 버그 수정 | 100% | -
 
----------------------------------------------------------------------------------------------------------------
-
-### commit log
+#### commit log
 
 주차 | 횟수| 깃허브 로그
 :-----: | :-----:| :-----:|
 1주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112094-e892c500-c84a-11eb-8285-9986a709f89b.png)
 2주차 | 5 | ![image](https://user-images.githubusercontent.com/22373033/121112139-f8120e00-c84a-11eb-8cc2-2fab1d70eb66.png)
 3주차 | 2 | ![image](https://user-images.githubusercontent.com/22373033/121112165-ffd1b280-c84a-11eb-8e60-833dc25f271c.png)
-4주차 | 0 | 
+4주차 | 0 | -
 5주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112186-0829ed80-c84b-11eb-9d1c-ae3a42c00d2c.png)
 6주차 | 12 | ![image](https://user-images.githubusercontent.com/22373033/121112245-1d9f1780-c84b-11eb-9ba5-ab2cb11c0c5f.png)
-7주차 | 5 | ![image](https://user-images.githubusercontent.com/22373033/121112264-24c62580-c84b-11eb-894f-159ab7ef31ab.png)
+7주차 | 7 | ![image](https://user-images.githubusercontent.com/22373033/121112264-24c62580-c84b-11eb-894f-159ab7ef31ab.png)
 8주차 | 10 | ![image](https://user-images.githubusercontent.com/22373033/121112306-314a7e00-c84b-11eb-919b-7cf9bf39248a.png)
 9주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112338-3a3b4f80-c84b-11eb-8d7b-3b796679db07.png)
-10주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112338-3a3b4f80-c84b-11eb-8d7b-3b796679db07.png)
-합계 | 30
-
-![image](https://user-images.githubusercontent.com/22373033/121112360-40c9c700-c84b-11eb-916b-9592735533c7.png)
-
----------------------------------------------------------------------------------------------------------------
-
-### MainGame의 game object
-
-
-#### class 구성 정보
-
-
-##### Player: 플레이어의 power, hp, 공격속도, 총알속도 정보를 갖고 있는 클래스. 인덱스를 이용해 좌우 이동에 따른 플레이어 기체를 그린다.
-- 구성정보: IndexedGameBitmap 사용, 클릭이벤트를 통해 이동한 거리만큼 x,y를 이동하며 x축 이동에 대해서 index값을 조정하여 기체가 기울은 효과를 준다.
-
-
-##### Enemy: 적 오브젝트의 power, hp, speed, 공격속도, 총알속도 정보를 갖고 있는 클래스. 단일 비트맵 기체를 그린다.
-- 구성정보: GameBitmap 사용, 일정 시간마다 x축 이동 방향이 랜덤하게 정해진다.
-
-
-##### EnemyGenerator: 스폰시간 마다 적 기체들을 생성하는 클래스. 스폰주기는 점점 짧아지며 스폰이 지속될수록 더 강한 적기들을 생성한다.
-
-![image](https://user-images.githubusercontent.com/22373033/119006982-d18b5080-b9cb-11eb-861e-79ddb7d7523b.png)
-
-(스폰주기가 짧아지게 하는 코드)
-
-![image](https://user-images.githubusercontent.com/22373033/119007262-08f9fd00-b9cc-11eb-906e-43e874000e75.png)
-
-(스폰이 됨에 따라 더 강해지도록 하는 코드)
-
-
-
-##### Bullet: MainGame의 모든 총알을 담당하는 클래스. 플레이어와 적의 총알은 MainGame의 Layer를 통해 분리되며 Player와 Enemy에서 생성하여 MainGame에 넘겨준다.
-- 구성정보: GameBitmap 사용, 생성 시 받는 speed만큼 y 방향으로 이동한다.
-
-![image](https://user-images.githubusercontent.com/22373033/119007703-70b04800-b9cc-11eb-8971-793622073a3c.png)
-
-(충돌한 객체에게 총알이 생성 시 받는 power만큼의 데미지를 적용)
-
-
-
-##### Item: 현재 파워업, 폭탄, 체력 아이템으로 나뉘며, 플레이어와 충돌처리 시 아이템 타입을 플레이어에게 넘겨주어 타입에 따른 효과를 적용시킨다. 벽에 닿을 시 튕긴다.
-
-![image](https://user-images.githubusercontent.com/22373033/119008097-d0a6ee80-b9cc-11eb-9a4f-4094ba80bd10.png)
-
-(GameBitmap을 타입에 따라 IndexedAnimationGameBitmap과 GameBitmap으로 사용)
-
-
-
-##### Coin: 몬스터 처치 시 아래방향으로 떨어져 내리는 코인. 플레이어와 충돌 시 점수를 획득한다.
-- 구성정보: IndexedAnimationGameBitmap을 사용, 아래 방향으로 떨어져내리며 벽에 닿아도 튕기지 않는다.
-
-
-##### Sound: HashMap을 이용하여 리소스 ID에 따른 사운드 ID를 저장한 뒤, 나중에 저장된 HashMap의 사운드 ID를 이용해 소리를 재생한다. 
-![image](https://user-images.githubusercontent.com/22373033/119008835-7b1f1180-b9cd-11eb-8b3c-6e8dd1f7ffdc.png)
-
-(HashMap에 사운드ID 저장하는 코드)
-
-![image](https://user-images.githubusercontent.com/22373033/119008940-97bb4980-b9cd-11eb-8c03-40057376c9b6.png)
-
-(HashMap의 사운드ID를 이용하는 코드)
-
-
-
-##### BGSound: singleton을 이용하여 하나의 bgm을 실행 및 일시정지할 수 있는 클래스. 배경음악의 loop 처리를 위해 별도로 만듦.
-- 구성정보: 한번만 init()을 통해 raw폴더의 리소스를 저장하면, 이후 start/pause를 통해 bgm을 처리할 수 있다.
-
-
-##### Health: 플레이어의 체력바 UI를 위한 클래스. 플레이어의 체력을 좌측 상단에 그려준다.
-- 구성정보: drawRect를 통해 회색 직사각형 위에 빨간색 직사각형을 그려 체력바를 그린다. setHP(int)함수를 통해 플레이어의 체력과 연동한다.
-
-
-##### VerticalScrollBackground: 종스크롤 배경을 위한 클래스. 배경 비트맵의 폭을 GameView에 맞춰 화면을 가득채울 때까지 반복하여 그리며 아래로 이동시킨다.
-
-
-
-
-#### 상호작용 정보
-![image](https://user-images.githubusercontent.com/22373033/119017805-5713fe00-b9d6-11eb-8d20-a34e21aa1e8b.png)
-
-
-
-
-#### 충돌처리
-![image](https://user-images.githubusercontent.com/22373033/119018575-2c767500-b9d7-11eb-937a-5bcd5c498a64.png)
-
-
-![image](https://user-images.githubusercontent.com/22373033/119018615-3c8e5480-b9d7-11eb-8e83-003dfb8904ba.png)
-
-
+10주차 | 3 | ![image](https://user-images.githubusercontent.com/22373033/121112360-40c9c700-c84b-11eb-916b-9592735533c7.png)
+합계 | 48 | 
 
 
 ---------------------------------------------------------------------------------------------------------------
-### [2차 발표 영상 Youtube Link](https://youtu.be/FeaXRI4UYgY "2021-1 SPGP TermProject 2차 발표")
 
-### [이전 README.md Link](https://github.com/JinbaeByeon/2021-1_SPGP_TermProject/blob/v1/README.md "README.md 1차")
-
+### 사용된 기술
 
 
+#### 참고한 것들
+ - BGSound.java 클래스에서 MediaPlayer 클래스를 이용한 부분은 안드로이드 스튜디오 사이트에서 참고함
+
+#### 수업내용에서 차용한 것
+ - 기본 프레임워크는 수업내용 중 DragonFlight를 차용함
+
+#### 직접 개발한 것
+ - 기존 플레이어 이동은 좌우 한정이었기 때문에 터치 후 이동을 따로 구현하였고, 부드러운 이동을 위해 손가락이 이동한 거리를 한번에 이동하지 않고 일정 시간에 걸쳐서 이동하도록 구현
+ - 플레이어의 좌우 이동에 따라 index값을 조정하여 기체의 기울기를 구현
+ - 생성되는 총알의 power 값에 따라 index 값을 조정하여 플레이어의 power에 따라 변하는 총알을 구현
+ - 그 외 아이템, 체력바 ui, 버튼, 몬스터 및 보스 패턴 등 구현
+ - 씬의 분리는 수업내용으로 나가기 전에 기존에 구현했던 코드 그대로 적용
 
 
 
 
+### 아쉬운 점
+- 알맞는 사운드 리소스가 없을 경우 이미지 리소스처럼 제작하기가 힘들어서 사운드를 많이 적용하지 못한 부분이 아쉽다.
+- 시간의 여유가 있었으면 일반 몬스터의 패턴을 다양하게 만들어보았을텐데 패턴이 단순한 것이 아쉽다.
+- 플레이어 종류별 HighScore를 기록하고 서버와 연동하도록 구현한다면 좋았을 것 같다.
 
+
+---------------------------------------------------------------------------------------------------------------
+### [게임 시연 Youtube Link](https://youtu.be/f231ut60-DY "2021-1 SPGP TermProject 시연 영상")

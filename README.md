@@ -44,19 +44,28 @@
 ### 게임 설명
 
 1.시작화면에서 비행기 선택
+
 ![image](https://user-images.githubusercontent.com/22373033/121117309-e3397880-c852-11eb-9909-932d38f03c8f.png)
+
 
 2. 인게임
 - 일반 몬스터 
+
 ![image](https://user-images.githubusercontent.com/22373033/121117748-a1f59880-c853-11eb-947f-b39c66cfe252.png)
 
+
 - 보스
+
 ![image](https://user-images.githubusercontent.com/22373033/121117901-dff2bc80-c853-11eb-9d2a-ce577117840a.png)
+
 
 (좌측 상단에는 플레이어 체력바, 우측 하단에는 폭탄 버튼이 존재하며 그 위에 있는 폭탄 아이콘은 플레이어가 갖고 있는 폭탄의 양을 나타낸다)
 
+
 3. 엔딩씬
+
 ![image](https://user-images.githubusercontent.com/22373033/121118397-bc7c4180-c854-11eb-907e-a7eae030b0ff.png)
+
 (재시작 시 시작화면으로, 종료 시 게임 종료)
 
 ---------------------------------------------------------------------------------------------------------------
